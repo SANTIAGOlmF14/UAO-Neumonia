@@ -21,17 +21,15 @@ Requerimientos necesarios para el funcionamiento:
 - Instale Anaconda para Windows siguiendo las siguientes instrucciones:
   https://docs.anaconda.com/anaconda/install/windows/
 
+- Instale uv (https://github.com/astral-sh/uv)
+
 - Abra Anaconda Prompt y ejecute las siguientes instrucciones:
-
-  conda create -n tf tensorflow
-
-  conda activate tf
 
   cd UAO-Neumonia
 
-  pip install -r requirements.txt
+  uv sync
 
-  python detector_neumonia.py
+  uv run uao-neumonia
 
 Uso de la Interfaz Gráfica:
 
@@ -73,7 +71,7 @@ Script que recibe el arreglo proveniento de read_img.py, realiza las siguientes 
 
 ## load_model.py
 
-Script que lee el archivo binario del modelo de red neuronal convolucional previamente entrenado llamado 'WilhemNet86.h5'.
+Script que lee el archivo binario del modelo de red neuronal convolucional previamente entrenado (carpeta model/).
 
 ## grad_cam.py
 
