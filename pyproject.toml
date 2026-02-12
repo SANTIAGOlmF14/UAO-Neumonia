@@ -16,3 +16,17 @@ dependencies = [
     "tensorflow==2.14.*; sys_platform == 'darwin' and platform_machine == 'x86_64'",
     "tkcap>=0.0.4",
 ]
+
+[project.scripts]
+uao-neumonia = "uao_neumonia.main:main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["uao_neumonia*"]
