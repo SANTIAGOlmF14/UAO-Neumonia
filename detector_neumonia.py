@@ -13,9 +13,27 @@ import tkcap
 import img2pdf
 import numpy as np
 import time
+import os
+import tensorflow as tf
+from tensorflow.keras import backend as K
+import pydicom as dicom
 tf.compat.v1.disable_eager_execution()
 tf.compat.v1.experimental.output_all_intermediates(True)
 import cv2
+
+
+_MODEL = None
+
+
+def model_fun():
+    global _MODEL
+    if _MODEL is not None:
+        return _MODEL
+    model_path = os.path.join(os.path.dirname(__file__), "model", "conv_MLP_84.h5")
+    if not os.path.exists(model_path):
+        raise FileNotFoundError(f"No se encontró el modelo en: {model_path}")
+    _MODEL = tf.keras.models.load_model(model_path, compile=False)
+    return _MODEL
 
 
 def grad_cam(array):
